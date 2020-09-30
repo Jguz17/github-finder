@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import Spinner from '../layouts/Spinner'
@@ -19,7 +19,7 @@ const Users = ({ users, loading }) => {
     }
 }
 
-Users.PropTypes = {
+Users.propTypes = {
     users: PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired
 }
