@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios'
 
 import Navbar from './components/layouts/Navbar'
-import UserItem from './components/users/UserItem'
 import Users from './components/users/Users'
+import Search from './components/users/Search'
 
 import './App.css';
-
 
 class App extends Component{
 
@@ -20,7 +19,7 @@ class App extends Component{
       loading: true
     })
 
-    const res = await axios.get('https://api.github.com/users')
+    const res = await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`)
 
     this.setState({
       users: res.data,
@@ -33,6 +32,7 @@ class App extends Component{
       <div className="app">
         <Navbar />
         <div className='container'>
+          <Search/>
           <Users loading={this.state.loading} users={this.state.users}/>
         </div>
       </div>
